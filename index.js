@@ -1,6 +1,5 @@
 // Packages needed for this application
 const inquirer = require('inquirer');
-const jest = require('jest');
 const fs = require('fs');
 const svg = require('generatedSVG.js');
 
@@ -14,7 +13,7 @@ const questions = [
     {
         type: 'input',
         name: 'txtcolor',
-        message: 'What color text would you like?',
+        message: 'What color text would you like? (example: Yellow or #FFFF00).',
     },
     {
         type: 'list',
