@@ -12,7 +12,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'txtcolor',
+        name: 'txtColor',
         message: 'What color text would you like? (example: Yellow or #FFFF00).',
     },
     {
@@ -23,7 +23,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'color',
+        name: 'shapeColor',
         message: 'Enter a keyword or hexadecimal number for your background color. (example: Yellow or #FFFF00).',
     } 
 ];
