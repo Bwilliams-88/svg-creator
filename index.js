@@ -1,7 +1,9 @@
 // Packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const svg = require('./generatedSVG.js');
+const {writeFile} = require('fs/promises');
+const SVG = require('./generatedSVG.js');
+const {Circle, Square, Triangle} = require('./lib/shapes.js')
 
 // Array of questions for user input
 const questions = [
@@ -13,7 +15,7 @@ const questions = [
     {
         type: 'input',
         name: 'txtColor',
-        message: 'What color text would you like? (example: Yellow or #FFFF00).',
+        message: 'Enter a keyword or hexadecimal number for your text color. (example: Yellow or #FFFF00).',
     },
     {
         type: 'list',
@@ -31,10 +33,8 @@ const questions = [
 // Function to create the logo.svg file
 function writeSVG(content) {
     console.log(content);
-    const svgContent = svg(content);
-    console.log(svgContent);
 
-    fs.writeFile('logo.svg', svgContent, (err) => {
+    fs.writeFile('logo.svg', content, (err) => {
         if (err) {
             console.error('Error writing logo.svg:', err);
         } else {
@@ -48,8 +48,25 @@ function init() {
     console.log('Application Initialized');
     inquirer
     .prompt(questions)
-    .then(answers => {
-        writeSVG(answers);        
+    .then(({text, txtColor, shape, shapeColor}) => {
+        console.log(text);
+        const svg = new SVG();
+        svg.svgText(text);
+        let currentShape
+        
+              if (shape === 'Square'){
+                currentShape = new Square;
+              }
+              if (shape === 'Triangle'){
+                currentShape = new Triangle;
+              }
+              if (shape === 'Circle'){
+                currentShape = new Circle;
+              }
+              currentShape.setColor(shapeColor);
+        svg.svgShape(currentShape);
+        writeSVG(svg.render());      
+        return writeFile('logo.svg', svg.render());  
     })
     .catch(error => {
         console.error('Error:', error);

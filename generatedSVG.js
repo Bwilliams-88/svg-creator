@@ -1,23 +1,29 @@
-// Function to render shapes
-function renderShape(shape) {
-  if (shape === 'square'){
-    return `${shape}`
+class GeneratedSVG {
+  constructor() {
+    this.shape = '';
+    this.text = '';
+  };
+  render() {
+    return `<svg version='1.1' width='300' height='200' xmlns='http://www.w3.org/2000/svg'>${this.shape}${this.text}</svg>`
   }
-  if (shape === 'triangle'){
-    return `${shape}`
+  svgText(text){
+    this.text = text
   }
-  if (shape === 'circle'){
-    return `${shape}`
+  svgShape(shape){
+    this.shape = shape
   }
 }
-// Function to render text
-function generatedSVG (text, txtColor, shape, shapeColor) {
-const svgContent = `<svg text='${text}' txtColor='${txtColor}' shape='${shape}' shapeColor='${shapeColor}' xmlns='http://www.w3.org/2000/svg'>
-<rect width='100%' height='100%' fill=${shapeColor}' />
-</svg>`;
 
-    return svgContent;
-};
+
+
+
+// function generatedSVG (text, txtColor, shape, shapeColor) {
+// const svgContent = `<svg txtColor='${txtColor}' shape='${shape}' shapeColor='${shapeColor}' xmlns='http://www.w3.org/2000/svg'>
+// <rect width='100%' height='100%' fill=${shapeColor}'>
+// </svg>`;
+
+//     return svgContent;
+// };
 // Function to rend background color of logo
 
-module.exports = generatedSVG;
+module.exports = GeneratedSVG;
