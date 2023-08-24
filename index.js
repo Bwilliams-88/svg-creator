@@ -1,14 +1,14 @@
 // Packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const svg = require('generatedSVG.js');
+const svg = require('./generatedSVG.js');
 
 // Array of questions for user input
 const questions = [
     {
         type: 'input',
         name: 'text',
-        message: 'Enter up to 3 characters for your logo text (example: MIT or IBM).',
+        message: 'Enter up to 3 characters for your logo text (example: MIT, IBM, or SVG).',
     },
     {
         type: 'input',
