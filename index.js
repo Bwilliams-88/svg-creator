@@ -3,7 +3,8 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const SVG = require('./generatedSVG.js');
 const {writeFile} = require('fs/promises');
-const {Circle, Square, Triangle} = require('./lib/shapes.js')
+const {Circle, Square, Triangle} = require('./lib/shapes.js');
+const { type } = require('os');
 
 // Array of questions for user input
 const questions = [
@@ -51,7 +52,9 @@ function init() {
     .then(({text, txtColor, shape, shapeColor}) => {
         // console.log(text);
         const svg = new SVG();
-        svg.svgText(text);
+        const userText = `<text x="150" y="125" font-size="60" text-anchor="middle">${text}</text>`;
+        svg.svgText(userText);
+        svg.svgTxtColor(txtColor);
         let currentShape
         
               if (shape === 'Square'){
@@ -65,7 +68,7 @@ function init() {
               }
 
         currentShape.setColor(shapeColor)
-        svg.svgShape(currentShape);
+        svg.svgShape(currentShape.render());
         writeSVG(svg.render());      
         return writeFile('logo.svg', svg.render());  
     })
