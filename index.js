@@ -35,7 +35,7 @@ const questions = [
 function writeSVG(content) {
     console.log(content);
 
-    fs.writeFile('logo.svg', content, (err) => {
+    fs.writeFile('./examples/logo.svg', content, (err) => {
         if (err) {
             console.error('Error writing logo.svg:', err);
         } else {
@@ -52,7 +52,7 @@ function init() {
     .then(({text, txtColor, shape, shapeColor}) => {
         // console.log(text);
         const svg = new SVG();
-        const userText = `<text x="150" y="125" font-size="60" text-anchor="middle">${text}</text>`;
+        const userText = `<text x="150" y="125" font-size="45" text-anchor="middle">${text}</text>`;
         svg.svgText(userText);
         svg.svgTxtColor(txtColor);
         let currentShape
