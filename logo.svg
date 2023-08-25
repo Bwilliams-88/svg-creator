@@ -1,5 +1,5 @@
 
     <svg version='1.1' width='300' height='200' xmlns='http://www.w3.org/2000/svg'>
-    <rect x="80" y="45" width="150" height="125" fill="BLUE" />
+    <polygon points="150 15, 250 175, 50 175" fill="blue" />
     <text x="150" y="125" font-size="45" text-anchor="middle">BLW</text>
     </svg>
